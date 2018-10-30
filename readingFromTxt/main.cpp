@@ -33,18 +33,15 @@ int main() {
         cout << "Can't read file \"points.txt\"";
         return -1;
     }
-
     readFile();
     cout << "\nPolygon's area - " << area() << "\nPolygon's perimeter - " << perimeter();
 }
 
 void readFile() {
     int i=0;
-
     while(!in.atEnd()) {
         line = in.readLine();
         points = line.split(";");
-
         quadOne[i].x = points.at(0).toFloat();
         quadOne[i].y = points.at(1).toFloat();
         cout << " X: " << quadOne[i].x;
@@ -77,14 +74,12 @@ float area() {
     float CA = distance(quadOne[2], quadOne[0]);
     float CD = distance(quadOne[2], quadOne[3]);
     float DA = distance(quadOne[0], quadOne[3]);
-
     float p1 = (AB + BC + CA) / 2;
     float p2 = (CD + DA + CA) / 2;
     float p3 = (AE + BE + AB) / 2;
     float area1 = sqrt(p1*(p1 - AB)*(p1 - BC)*(p1 - CA));
     float area2 = sqrt(p2*(p2 - CD)*(p2 - DA)*(p2 - CA));
     float area3 = sqrt(p3*(p3 - BE)*(p3 - AE)*(p3 - AB));
-
     float area = area1 + area2 + area3;
     return area;
 }
